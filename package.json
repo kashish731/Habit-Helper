@@ -1,0 +1,86 @@
+{
+  "name": "habit-helper",
+  "displayName": "Habit-Helper",
+  "description": "VS Code extension to detect bad programming habits.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.106.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onLanguage:*"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "habitHelperContainer",
+          "title": "Habit Helper",
+          "icon": "$(bug)"
+        }
+      ]
+    },
+    "views": {
+      "habitHelperContainer": [
+        {
+          "id": "habitHelper.scoreView",
+          "name": "Code Score",
+          "type": "webview"
+        },
+        {
+          "id": "habitHelper.issuesView",
+          "name": "Issues"
+        },
+        {
+          "id": "habitHelper.chatbotView",
+          "name": "Chatbot",
+          "type": "webview"
+        }
+      ]
+    },
+    "codeLens": [
+      {
+        "language": "*"
+      }
+    ],
+    "commands": [
+      {
+        "command": "habit-helper.helloWorld",
+        "title": "Hello World"
+      },
+      {
+        "command": "habit-helper.sendToLangflow",
+        "title": "Send to Langflow"
+      },
+      {
+        "command": "habit-helper.goToIssue",
+        "title": "Go to Issue"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@types/vscode": "^1.106.0",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.39.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.3"
+  },
+  "dependencies": {
+    "openai": "^6.9.0"
+  }
+}
